@@ -28,8 +28,8 @@
 \newlength{\cardw}
 \newlength{\cardh}
 %% ISO 7810 size: 85.60mm × 53.98mm
-\setlength{\cardw}{85.60mm}
-\setlength{\cardh}{53.98mm}
+%\setlength{\cardw}{85.60mm}
+%\setlength{\cardh}{53.98mm}
 %% European size: 85mm × 55mm
 %\setlength{\cardw}{85mm}
 %\setlength{\cardh}{55mm}
@@ -37,6 +37,8 @@
 %\setlength{\cardw}{3.5in}
 %\setlength{\cardh}{2in}
 
+\setlength{\cardw}{89mm}
+\setlength{\cardh}{54mm}
 
 %%% DEFINE USER DATA
 \newcommand{\Name}{
@@ -73,17 +75,20 @@ zhangsan@website.com
 % card content
 \foreach \i in {0,1} \foreach \j in {0,1,2,3,4} {
    \node at (\i*\cardw+0.22\cardw,\j*\cardh+0.35\cardh) {
-   \begin{pspicture} (15mm,35mm)
+   \begin{pspicture} (12mm,32mm)
    			\psbarcode{MECARD:N:San,Zhang;TEL:+86 1234567;EMAIL:zhangsan@website.com;URL:http://www.homepage.com}{eclevel=M width=1.0 height=1.0}{qrcode}
    		\end{pspicture}
    };
+ 
+   % logo
+   \node at (\i*\cardw+0.7\cardw,\j*\cardh+0.7\cardh) {\includegraphics[width=0.25\cardw]{github}};
    
    \node[black!25!mycolor][right] at (\i*\cardw+0.05\cardw,\j*\cardh+0.85\cardh) {\Name};
    \node [right] at (\i*\cardw+0.05\cardw,\j*\cardh+0.7\cardh) {\Description};
    \node [left] at (\i*\cardw+0.95\cardw,\j*\cardh+0.35\cardh) {\Phone};
    \node [left] at (\i*\cardw+0.95\cardw,\j*\cardh+0.25\cardh) {\Email};
-   \node [left] at (\i*\cardw+0.95\cardw,\j*\cardh+0.15\cardh) {\Site};
-i};
+   \node [left] at (\i*\cardw+0.95\cardw,\j*\cardh+0.15\cardh) {\Site}; 
+};
 \end{tikzpicture}
 \clearpage\end{CJK*}
 \end{document}
